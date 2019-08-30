@@ -3,3 +3,6 @@ env
 
 # Ignore pycache files
 *pycache*
+
+# Ignore media files
+media

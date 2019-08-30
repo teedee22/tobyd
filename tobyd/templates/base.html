@@ -64,22 +64,9 @@
       </div>
     </div>
   </nav>
+  {% block content %}
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{% static "cool.jpg" %}')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Tobyd.net</h1>
-            <span class="subheading">Exploring Django, python, linux and more things backend</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
+  {% endblock %}
   <!-- Main Content -->
   <div class="container">
     <div class="row">
@@ -184,7 +171,7 @@
     </div>
 </footer>
 
-        {% block content %}{% endblock %}
+
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/tobyd.js' %}"></script>
