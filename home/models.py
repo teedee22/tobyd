@@ -9,6 +9,7 @@ from wagtail.core.models import Page
 
 
 class HomePage(Page):
+    """Home page model/ landing page"""
     template = "home/home_page.html"
     max_count = 1
     banner_title = models.CharField(max_length=20, blank=False, null=True)
