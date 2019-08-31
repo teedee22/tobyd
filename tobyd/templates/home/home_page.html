@@ -20,30 +20,30 @@
 
 <!-- Main Content -->
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-        {% for blogitem in posts %}
-      <div class="post-preview">
-        <a href="{{ blogitem.url }}">
-          <h2 class="post-title">
-            {{ blogitem.title }}
-          </h2>
-          <h3 class="post-subtitle">
-            {{ blogitem.description }}
-          </h3>
-        </a>
-        <p class="post-meta">Posted by
-          <a href="#">{{ blogitem.author }}</a>
-          {{ blogitem.first_published_at }}</p>
-      </div>
-      {% endfor %}
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for blogitem in posts %}
+                <div class="post-preview">
+                    <a href="{{ blogitem.url }}">
+                        <h2 class="post-title">
+                            {{ blogitem.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ blogitem.description }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by
+                    <a href="#">{{ blogitem.author }}</a>
+                    {{ blogitem.first_published_at }}</p>
+                </div>
+            {% endfor %}
 
-      <hr>
-      <!-- Pager -->
-      <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-      </div>
+            <hr>
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}

@@ -2,33 +2,34 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
 <!-- Page Header -->
-{% image banner_image fill-800x600 as img %}
- <header class="masthead" style="background-image: url('{{ img.url }}')">
-   <div class="overlay"></div>
-   <div class="container">
-     <div class="row">
-       <div class="col-lg-8 col-md-10 mx-auto">
-         <div class="post-heading">
-           <h1>{% if self.custom_title %}{{ self.custom_title }} {% else %} {{ self.title }} {% endif %}</h1>
-           <h2 class="subheading">{{ self.description }}</h2>
-           <span class="meta">Posted by
-             <a href="#">{{ self.author }}</a>
-             on August 24, 2019</span>
-         </div>
-       </div>
-     </div>
-   </div>
+{% image self.banner_image max-1900x1265 as img %}
+
+<header class="masthead" style="background-image: url('{{ img.url }}')">
+<div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{% if self.custom_title %}{{ self.custom_title }} {% else %} {{ self.title }} {% endif %}</h1>
+                    <h2 class="subheading">{{ self.description }}</h2>
+                    <span class="meta">Posted by
+                     <a href="#">{{ self.author }}</a>
+                     on August 24, 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
  </header>
 
  <!-- Post Content -->
  <article>
-   <div class="container">
-     <div class="row">
-       <div class="col-lg-8 col-md-10 mx-auto">
-         {{ self.content|richtext }}
-       </div>
-     </div>
-   </div>
- </article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {{ self.content|richtext }}
+            </div>
+        </div>
+    </div>
+</article>
 
 {% endblock %}
