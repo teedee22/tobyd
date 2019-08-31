@@ -1,9 +1,15 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    MultiFieldPanel,
+    StreamFieldPanel,
+)
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+from streamfs import blocks
 
 
 class BlogDetailPage(Page):
@@ -31,6 +37,16 @@ class BlogDetailPage(Page):
     author = models.CharField(max_length=100, blank=True, null=True)
     content = RichTextField(blank=False)
 
+    streams = StreamField(
+        [
+            ("full_richtext", blocks.RichTextBlock()),
+            ("code_block", blocks.CodeBlock()),
+            ("single_image", blocks.SingleImageBlock())
+        ],
+        null=True,
+        blank=True,
+    )
+
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
@@ -42,4 +58,5 @@ class BlogDetailPage(Page):
             heading="Blog page information",
         ),
         FieldPanel("content"),
+        StreamFieldPanel("streams"),
     ]

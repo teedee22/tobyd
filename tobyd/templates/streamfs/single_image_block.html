@@ -1,0 +1,6 @@
+{% load wagtailimages_tags %}
+{% image self.image max-835x252 as img %}
+<div style="border: 3px;">
+<img src="{{ img.url }}" alt="{{ img.alt }}">
+<span class="caption text-muted" style="text-align: left;">{{ self.caption }}</span>
+</div>

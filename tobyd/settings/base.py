@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'blog',
     'search',
     'site_settings',
+    'streamfs',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
