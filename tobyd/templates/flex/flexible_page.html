@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block content %}
+
+<!-- Page Header -->
+{% image self.banner_image fill-900x600 as img %}
+<header class="masthead" style="background-image: url('{{ img.url }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>{% if self.custom_title %}{{ self.custom_title }} {% else %} {{ self.title }} {% endif %}</h1>
+                <span class="subheading">{% if self.subtitle %} {{ self.subtitle }} {% endif %}</span>
+            </div>
+        </div>
+    </div>
+    </div>
+</header>
+
+<!-- Streamfield content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for block in page.content %}
+                {% include_block block %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
