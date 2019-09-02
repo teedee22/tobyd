@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'site_settings',
     'streamfs',
     'flex',
+    'menus',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

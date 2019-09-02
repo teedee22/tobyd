@@ -1,5 +1,5 @@
-{% load static wagtailuserbar %}
-
+{% load static wagtailuserbar menus_tags %}
+{% get_menu "main" as nav %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -48,18 +48,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        {% for item in nav.menu_items.all %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="{{ item.link }}">{{ item.link_title }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about/">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/man-must-explore-and-exploration-its-greatest/">Sample Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
