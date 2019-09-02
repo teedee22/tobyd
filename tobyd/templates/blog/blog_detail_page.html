@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
+
+
 <!-- Page Header -->
 {% image self.banner_image max-1900x1265 as img %}
-
 <header class="masthead" style="background-image: url('{{ img.url }}')">
 <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-heading">
-                    <h1>{% if self.custom_title %}{{ self.custom_title }} {% else %} {{ self.title }} {% endif %}</h1>
+                    <h1>{{ self.display_title }}</h1>
                     <h2 class="subheading">{{ self.description }}</h2>
                     <span class="meta">Posted by
                      <a href="#">{{ self.author }}</a>
@@ -20,6 +21,20 @@
         </div>
     </div>
  </header>
+
+ <!-- Row containing categories -->
+{% if self.category.all.count > 0 %}
+<div class="row">
+    <div class="col text-center">
+        <ul style='list-style: none;'>
+            <li style='display: inline-block'>{% if self.category.all.count == 1 %}Category: {% elif self.plural_categories > 1 %} Categories: {% endif %}</li>
+            {% for cat in self.category.all %}
+                <a href="/blog/?category={{ cat.slug }}"><li style='display: inline-block'> {{ cat.name }}{% if forloop.counter < self.category.all.count %}, {% endif %}</li></a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
 
  <!-- Post Content -->
  <article>
