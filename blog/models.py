@@ -1,4 +1,5 @@
 from django import forms
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
 
@@ -61,34 +62,37 @@ class BlogListingPage(Page):
     def get_context(self, request):
         """get all blog posts to list"""
         context = super().get_context(request)
-        context["posts"] = (
+        all_posts = (
             BlogDetailPage.objects.live()
             .public()
             .order_by("-first_published_at")
         )
+        # Adding paginator to blog listing page:
+        paginator = Paginator(all_posts, 5)
+        page = request.GET.get("page")
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
 
-        # If there is a get request on category name, return posts from just that category
-        if (
+        context['posts'] = posts
+
+        # Filters posts if request is category using GET
+        filtered_posts = (
             BlogDetailPage.objects.live()
             .public()
             .filter(category__slug__in=[request.GET.get("category")])
-        ):
-            context["posts"] = (
-                BlogDetailPage.objects.live()
-                .public()
-                .filter(category__slug__in=[request.GET.get("category")])
-            )
+        )
+        if filtered_posts:
+            context["posts"] = filtered_posts
             context["category"] = request.GET.get("category").capitalize()
         return context
 
     @property
     def display_title(self):
-        """method for logic of what title to display on blog detail page"""
-        if self.custom_title:
-            return self.custom_title
-        elif self.title:
-            return self.title
-        return "Missing Title"
+        return title_method(self)
 
 
 class BlogDetailPage(Page):
@@ -147,9 +151,13 @@ class BlogDetailPage(Page):
 
     @property
     def display_title(self):
-        """method for logic of what title to display on blog detail page"""
-        if self.custom_title:
-            return self.custom_title
-        elif self.title:
-            return self.title
-        return "Missing Title"
+        return title_method(self)
+
+
+def title_method(self):
+    """Method for logic of what title to display on blog detail and listing"""
+    if self.custom_title:
+        return self.custom_title
+    elif self.title:
+        return self.title
+    return "Missing Title"
