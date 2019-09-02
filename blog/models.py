@@ -12,8 +12,39 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from streamfs import blocks
 
 
+class BlogListingPage(Page):
+    """Lists all the blog posts"""
+
+    max_count = 1
+    template = "blog/blog_listing_page.html"
+    banner_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        related_name="+",
+        on_delete="models.SET_NULL",
+    )
+    custom_title = models.CharField(max_length=120, blank=False, null=False)
+    content_panels = Page.content_panels + [
+        FieldPanel("custom_title"),
+        ImageChooserPanel("banner_image"),
+    ]
+
+    def get_context(self, request):
+        """get all blog posts to list"""
+        context = super().get_context(request)
+        context["posts"] = (
+            BlogDetailPage.objects.live()
+            .public()
+            .order_by("-first_published_at")
+        )
+        return context
+
+
 class BlogDetailPage(Page):
     """Blog detail page"""
+
+    template = "blog/blog_detail_page.html"
 
     custom_title = models.CharField(
         max_length=120,
@@ -41,7 +72,7 @@ class BlogDetailPage(Page):
         [
             ("full_richtext", blocks.RichTextBlock()),
             ("code_block", blocks.CodeBlock()),
-            ("single_image", blocks.SingleImageBlock())
+            ("single_image", blocks.SingleImageBlock()),
         ],
         null=True,
         blank=True,
