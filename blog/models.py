@@ -120,7 +120,6 @@ class BlogDetailPage(Page):
         on_delete="models.SET_NULL",
     )
     author = models.CharField(max_length=100, blank=True, null=True)
-    content = RichTextField(blank=False)
 
     streams = StreamField(
         [
@@ -145,7 +144,6 @@ class BlogDetailPage(Page):
             heading="Blog page information",
         ),
         FieldPanel("category", widget=forms.CheckboxSelectMultiple),
-        FieldPanel("content"),
         StreamFieldPanel("streams"),
     ]
 
