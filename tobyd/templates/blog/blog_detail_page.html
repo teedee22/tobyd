@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags blogapp_tags %}
 {% block content %}
 
 
@@ -54,4 +54,6 @@
         </div>
     </div>
 </article>
+{% show_comments %}
+
 {% endblock %}
