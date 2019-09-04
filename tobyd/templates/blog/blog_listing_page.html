@@ -36,14 +36,14 @@
                      </a>
                      <p class="post-meta">Posted by
                      <a href="#">{{ blogitem.author }}</a>
-                     {{ blogitem.last_published_at }}</p>
+                     {{ blogitem.last_published_at.date }}</p>
                  </div>
              {% endfor %}
 
              <hr>
          </div>
      </div>
-     
+
      <!-- Add pagination -->
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
