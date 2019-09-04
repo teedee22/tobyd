@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags blogapp_tags %}
 {% block content %}
 
 
@@ -54,4 +54,14 @@
         </div>
     </div>
 </article>
+
+<!-- disqus comments section -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% show_comments %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}
