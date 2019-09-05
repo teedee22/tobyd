@@ -4,7 +4,7 @@ from .base import *
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = False
+DEBUG = True
 
 # DATABASES['default'] = dj_database_url.config()
 
@@ -25,6 +25,17 @@ CSRF_COOKIE_SECURE = True
 # SECURE_SSL_REDIRECT = True
 
 # SESSION_COOKIE_SECURE = True
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASS'],
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 try:
     from .local import *
