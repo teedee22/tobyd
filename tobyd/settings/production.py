@@ -8,7 +8,7 @@ DEBUG = True
 
 # DATABASES['default'] = dj_database_url.config()
 
-ALLOWED_HOSTS = ['tobyd.net', '198.211.109.134', '127.0.0.1']
+ALLOWED_HOSTS = ['tobyd.net', '198.211.109.134', 'localhost']
 
 # Run manage.py check --deploy
 
