@@ -1,6 +1,7 @@
 # Ignore env variables
 env
 env2
+static
 # Ignore pycache files
 *pycache*
 
