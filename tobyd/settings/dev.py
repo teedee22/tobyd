@@ -21,7 +21,7 @@ MIDDLEWARE = MIDDLEWARE + [
 ]
 
 INTERNAL_IPS = ("127.0.0.1", "172.17.0.1")
-
+SECURE_SSL_REDIRECT = False
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 

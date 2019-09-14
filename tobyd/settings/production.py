@@ -9,11 +9,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 DEBUG = False
 
-# DATABASES['default'] = dj_database_url.config()
 
 ALLOWED_HOSTS = ['tobyd.net', '198.211.109.134', 'localhost']
-
-# Run manage.py check --deploy
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
