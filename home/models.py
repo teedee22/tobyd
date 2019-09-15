@@ -75,7 +75,7 @@ class HomePage(Page):
         posts = (
             BlogDetailPage.objects.live()
             .public()
-            .order_by("-first_published_at")[:1]
+            .order_by("-first_published_at")[:2]
         )
 
         context["posts"] = posts

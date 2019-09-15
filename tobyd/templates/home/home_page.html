@@ -27,7 +27,7 @@
 <!-- About box -->
 {% image self.about_image fill-640x480-c100 as img2 %}
 <div class="container">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-12">
         <div class="jumbotron text-center hoverable p-4" style="background-color: white;">
           <!-- Grid row -->
             <div class="row">
@@ -45,45 +45,49 @@
                 <h4 class="h3 mb-4">{{ self.about_title }}</h4>
                 {{ self.about_text|richtext }}
                 <div class="clearfix text-center">
-                <button class="btn btn-info">Let's talk!</button>
+                <button class="btn btn-info">Free consultation</button>
                 </div>
               </div>
               <!-- Grid column -->
             </div>
         </div>
+        <hr>
     </div>
 </div>
+<!-- main content test-->
+<!-- Page Content -->
+    <div class="container">
+        
+      <!-- Page Heading -->
+      <h1 class="my-4">Featured
+        <small>From my blog</small>
+      </h1>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <hr>
-          <h3><center><i>Featured</i></center></h3>
-                <div class="post-preview">
-                    <a href="/">
-                        <h2 class="post-title">
-                            {{ self.featured_blog_post }}
-                        </h2>
-                        <h3 class="post-subtitle">
-                            {{ self.featured_blog_post.specific.description }}
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by
-                    <a href="#">{{ self.featured_blog_post.specific.author }}</a>
-                    {{ self.featured_blog_post.specific.last_published_at.date }}</p>
-                </div>
+      <!-- Project One -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="{{ self.featured_blog_post.specific.url }}">
+              {% image self.featured_blog_post.specific.banner_image fill-700x300-c100 as img3 %}
+            <img class="img-fluid rounded mb-3 mb-md-0" src="{{ img3.url }}" alt="{{ img3.alt }}">
+          </a>
         </div>
-    </div>
-</div>
+        <div class="col-md-5">
+          <a href="{{ self.featured_blog_post.specific.url }}"><h3>{{ self.featured_blog_post }}</h3></a>
+          <p>{{ self.featured_blog_post.specific.description }}</p>
+          <a class="btn btn-secondary" href="{{ self.featured_blog_post.specific.url }}">Read more</a>
+        </div>
+      </div>
+      <!-- /.row -->
 
+      <hr>
+</div>
 
 <!-- Main Content -->
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <hr>
-          <h3><center><i>Latest</i></center></h3>
+
+          <h3><center><i>Latest blog posts</i></center></h3>
             {% for blogitem in posts %}
                 <div class="post-preview">
                     <a href="{{ blogitem.url }}">
@@ -103,7 +107,7 @@
             <hr>
             <!-- Pager -->
             <div class="clearfix">
-                <a class="btn btn-primary float-right" href="/blog">Older Posts &rarr;</a>
+                <a class="btn btn-secondary float-right" href="/blog">Older Posts &rarr;</a>
             </div>
         </div>
     </div>
