@@ -23,21 +23,9 @@
     </div>
 </header>
 <hr>
-<!--
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 col-md-10 mx-auto">
-      <div class="jumbotron text-center" style="color: white; background-color: #0085A1;">
-      <h2>Do you need your website to bring you more clients?</h2>
-      <br>
-      <button class="btn-success">Get in touch for a free consultation</button>
-        </div>
-      </div>
 
-  </div>
-</div>
--->
-
+<!-- About box -->
+{% image self.about_image fill-640x480-c100 as img2 %}
 <div class="container">
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
@@ -48,7 +36,7 @@
     <div class="col-md-4 offset-md-1 mx-3 my-5">
       <!-- Featured image -->
       <div class="view overlay">
-        <img src="https://images.pexels.com/photos/2889359/pexels-photo-2889359.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid rounded-circle" alt="{{ img.alt }}">
+        <img src="{{ img2.url }}" class="img-fluid rounded-circle" alt="{{ img2.alt }}">
         <a>
           <div class="mask rgba-white-slight"></div>
         </a>
@@ -57,19 +45,11 @@
       <!-- Grid column -->
       <div class="col-md-7 text-md-left ml-3 mt-3">
         <!-- Excerpt -->
-        <h4 class="h3 mb-4">I'm Toby, I make websites</h4>
-        <p>I'm from the UK and live on a coffee farm in Colombia. (pictured above)</p>
-        <p>Do you need a <b>clean</b>, <b>easy to update</b> website which <b>ranks on search engines?</b></p>
-      </div>
-      <div class="col-6">
-      <div class="clearfix text-center">
-      <button class="btn btn-primary">More about me</button>
-      </div>
-      </div>
-      <div class="col-6">
-      <div class="clearfix text-center">
-      <button class="btn btn-info">Let's talk</button>
-      </div>
+        <h4 class="h3 mb-4">{{ self.about_title }}</h4>
+        {{ self.about_text|richtext }}
+        <div class="clearfix text-center">
+        <button class="btn btn-info">Let's talk!</button>
+        </div>
       </div>
       <!-- Grid column -->
 </div>
@@ -83,6 +63,31 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <hr>
+          <h3><center><i>Featured</i></center></h3>
+                <div class="post-preview">
+                    <a href="/">
+                        <h2 class="post-title">
+                            {{ self.featured_blog_post }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ self.featured_blog_post.specific.description }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by
+                    <a href="#">{{ self.featured_blog_post.specific.author }}</a>
+                    {{ self.featured_blog_post.specific.last_published_at.date }}</p>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <hr>
+          <h3><center><i>Latest</i></center></h3>
             {% for blogitem in posts %}
                 <div class="post-preview">
                     <a href="{{ blogitem.url }}">
