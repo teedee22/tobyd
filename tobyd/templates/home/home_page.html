@@ -10,6 +10,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
+                  <br>
                   {% if self.banner_title %}
                       <h1>{{ self.banner_title }}</h1>
                   {% endif %}
@@ -21,12 +22,67 @@
         </div>
     </div>
 </header>
+<hr>
+<!--
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-10 mx-auto">
+      <div class="jumbotron text-center" style="color: white; background-color: #0085A1;">
+      <h2>Do you need your website to bring you more clients?</h2>
+      <br>
+      <button class="btn-success">Get in touch for a free consultation</button>
+        </div>
+      </div>
 
+  </div>
+</div>
+-->
+
+<div class="container">
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
+<div class="jumbotron text-center hoverable p-4" style="background-color: white;">
+  <!-- Grid row -->
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col-md-4 offset-md-1 mx-3 my-5">
+      <!-- Featured image -->
+      <div class="view overlay">
+        <img src="https://images.pexels.com/photos/2889359/pexels-photo-2889359.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid rounded-circle" alt="{{ img.alt }}">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+    </div>
+      <!-- Grid column -->
+      <div class="col-md-7 text-md-left ml-3 mt-3">
+        <!-- Excerpt -->
+        <h4 class="h3 mb-4">I'm Toby, I make websites</h4>
+        <p>I'm from the UK and live on a coffee farm in Colombia. (pictured above)</p>
+        <p>Do you need a <b>clean</b>, <b>easy to update</b> website which <b>ranks on search engines?</b></p>
+      </div>
+      <div class="col-6">
+      <div class="clearfix text-center">
+      <button class="btn btn-primary">More about me</button>
+      </div>
+      </div>
+      <div class="col-6">
+      <div class="clearfix text-center">
+      <button class="btn btn-info">Let's talk</button>
+      </div>
+      </div>
+      <!-- Grid column -->
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <!-- Main Content -->
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+          <hr>
             {% for blogitem in posts %}
                 <div class="post-preview">
                     <a href="{{ blogitem.url }}">

@@ -12,12 +12,12 @@ class HomePage(Page):
 
     template = "home/home_page.html"
     max_count = 1
-    banner_title = models.CharField(max_length=20, blank=True, null=True)
+    banner_title = models.CharField(max_length=50, blank=True, null=True)
     banner_subtitle = models.CharField(max_length=200, blank=True, null=True)
     banner_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
-        blank=False,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
     )
