@@ -1,9 +1,9 @@
 # Ignore env variables
-env
-env2
-#static
+env/
+env2/
+/static
 # Ignore pycache files
 *pycache*
 
 # Ignore media files
-media
+media/

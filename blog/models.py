@@ -78,6 +78,7 @@ class BlogListingPage(Page):
             posts = paginator.page(paginator.num_pages)
 
         context['posts'] = posts
+        context['categories'] = BlogCategory.objects.all()
 
         # Filters posts if request is category using GET
         filtered_posts = (
