@@ -5,7 +5,7 @@
 {% image self.banner_image max-1900x1265 as img %}
 
 <header class="masthead" style="background-image: url('{{ img.url }}')">
-<div class="overlay"></div>
+    <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -18,13 +18,31 @@
             </div>
         </div>
     </div>
- </header>
-
+</header>
  <!-- Main Content -->
+
+<div class="container">
+    
+    <p> Donec dignissim mauris nec sapien auctor, id volutpat ligula aliquam. Vestibulum aliquam iaculis mattis. Curabitur imperdiet erat venenatis tellus cursus, at aliquet metus molestie. Maecenas gravida porttitor lorem, quis dapibus sem fermentum ut. Nullam varius purus eget quam auctor lobortis. Morbi scelerisque sem ut felis egestas faucibus. Proin iaculis, lectus at vestibulum tincidunt, elit dui iaculis nulla, vitae efficitur mauris arcu non metus. Vivamus mollis, sem id tristique ultrices, diam lacus tristique lectus, ac convallis ipsum diam quis massa.</p>
+
+
+</div>
+
+
  <div class="container">
-     <div class="row">
-         <div class="col-lg-8 col-md-10 mx-auto">
-             {% for blogitem in posts %}
+             <!-- For the first loop counter I've reversed the order of the columns so that on mobile categories appears on top -->
+             <div class="row flex-md-row-reverse">
+             <div class="col-md-3 mx-auto">
+                 <br>
+                 <h1>Categories</h1>
+                 {% for category in categories %}
+                    <a style="display: block;" href="/blog/?category={{ category.slug }}"> {{ category }}</a>
+                 {% endfor %}
+
+             </div>
+             <div class="col-md-9">
+                 {% for blogitem in posts %}
+                 <div class="col">
                  <div class="post-preview">
                      <a href="{{ blogitem.url }}">
                          <h2 class="post-title">
@@ -38,7 +56,9 @@
                      <a href="#">{{ blogitem.author }}</a>
                      {{ blogitem.last_published_at.date }}</p>
                  </div>
-             {% endfor %}
+                 </div>
+                 {% endfor %}
+             </div>
 
              <hr>
          </div>

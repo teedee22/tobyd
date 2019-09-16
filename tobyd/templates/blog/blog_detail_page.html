@@ -12,7 +12,6 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-heading">
                     <h1>{{ self.display_title }}</h1>
-                    <h2 class="subheading">{{ self.description }}</h2>
                     <span class="meta">Posted by
                      <a href="#">{{ self.author }}</a>
                      on {{ self.last_published_at.date }}</span>
@@ -41,6 +40,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
+                <br>
                 {% for block in page.streams %}
                     {% include_block block %}
                 {% endfor %}
