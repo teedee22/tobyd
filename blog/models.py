@@ -134,6 +134,15 @@ class BlogDetailPage(Page):
 
     category = ParentalManyToManyField("blog.BlogCategory", blank=True)
 
+    def get_context(self, request):
+        """get categories & Blog posts"""
+        context = super().get_context(request)
+        categories = BlogCategory.objects.all()
+        posts = BlogDetailPage.objects.all().public().live()
+        context['categories'] = categories
+        context['posts'] = posts
+        return context
+
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [

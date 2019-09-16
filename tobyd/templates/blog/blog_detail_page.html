@@ -19,36 +19,40 @@
             </div>
         </div>
     </div>
- </header>
+</header>
 
  <!-- Row containing categories -->
-{% if self.category.all.count > 0 %}
-<div class="row">
-    <div class="col text-center">
-        <ul style='list-style: none;'>
-            <li style='display: inline-block'>{% if self.category.all.count == 1 %}Category: {% elif self.plural_categories > 1 %} Categories: {% endif %}</li>
-            {% for cat in self.category.all %}
-                <a href="/blog/?category={{ cat.slug }}"><li style='display: inline-block'> {{ cat.name }}{% if forloop.counter < self.category.all.count %}, {% endif %}</li></a>
+<div class="container">
+    <div class="row flex-md-row-reverse">
+        <div class="col-md-3 mx-auto my-3">
+            <div class="row">
+                <div class="col text-center">
+                    {% if self.category.all.count > 0 %}
+                        <ul style='list-style: none;'>
+                            <li style='display: inline-block'>{% if self.category.all.count == 1 %}Category: {% elif self.plural_categories > 1 %} Categories: {% endif %}</li>
+                            {% for cat in self.category.all %}
+                                <a href="/blog/?category={{ cat.slug }}"><li style='display: inline-block'> {{ cat.name }}{% if forloop.counter < self.category.all.count %}, {% endif %}</li></a>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <h1>Categories</h1>
+            {% for category in categories %}
+                <a style="display: block;" href="/blog/?category={{ category.slug }}"> {{ category }}</a>
             {% endfor %}
-        </ul>
-    </div>
-</div>
-{% endif %}
-
- <!-- Post Content -->
- <article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <br>
+        </div>
+        <div class="col-md-9">
+            <!-- Post Content -->
+            <article>
                 {% for block in page.streams %}
                     {% include_block block %}
                 {% endfor %}
-            </div>
+            </article>
+                {% show_comments %}
         </div>
     </div>
-</article>
-
+</div>
 <!-- disqus comments section -->
 <div class="container">
     <div class="row">
