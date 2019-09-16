@@ -40,9 +40,11 @@
               </div>
             </div>
               <!-- Grid column -->
-              <div class="col-md-7 text-left">
+              <div class="col-md-7 mx-auto text-left">
                 <!-- Excerpt -->
-                <h4 class="h3 mb-4">{{ self.about_title }}</h4>
+                <h1 class="my-4">{{ self.about_title }}
+                    <small>I make Websites</small>
+                </h1>
                 {{ self.about_text|richtext }}
                 <div class="clearfix text-center">
                 <button class="btn btn-info">Free consultation</button>
@@ -56,30 +58,27 @@
 </div>
 <!-- main content test-->
 <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading -->
-      <h1 class="my-4">Featured
+<div class="container">
+    <!-- Page Heading -->
+    <h1 class="my-4">Featured
         <small>from my blog</small>
-      </h1>
+    </h1>
 
-      <!-- Project One -->
-      <div class="row">
+    <!-- Project One -->
+    <div class="row">
         <div class="col-md-7">
-          <a href="{{ self.featured_blog_post.specific.url }}">
-              {% image self.featured_blog_post.specific.banner_image fill-700x300-c100 as img3 %}
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{{ img3.url }}" alt="{{ img3.alt }}">
-          </a>
+            <a href="{{ self.featured_blog_post.specific.url }}">
+                {% image self.featured_blog_post.specific.banner_image fill-700x300-c100 as img3 %}
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{{ img3.url }}" alt="{{ img3.alt }}">
+            </a>
         </div>
         <div class="col-md-5">
-          <a href="{{ self.featured_blog_post.specific.url }}"><h3>{{ self.featured_blog_post }}</h3></a>
-          <p>{{ self.featured_blog_post.specific.description }}</p>
-          <a class="btn btn-secondary" href="{{ self.featured_blog_post.specific.url }}">Read more</a>
+            <a href="{{ self.featured_blog_post.specific.url }}"><h3>{{ self.featured_blog_post }}</h3></a>
+            <p>{{ self.featured_blog_post.specific.description }}</p>
+            <a class="btn btn-secondary" href="{{ self.featured_blog_post.specific.url }}">Read more</a>
         </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
+    </div>
+    <hr>
 </div>
 
 <!-- Main Content -->
