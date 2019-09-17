@@ -77,8 +77,8 @@ class BlogListingPage(Page):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
 
-        context['posts'] = posts
-        context['categories'] = BlogCategory.objects.all()
+        context["posts"] = posts
+        context["categories"] = BlogCategory.objects.all()
 
         # Filters posts if request is category using GET
         filtered_posts = (
@@ -136,11 +136,25 @@ class BlogDetailPage(Page):
 
     def get_context(self, request):
         """get categories & Blog posts"""
+
         context = super().get_context(request)
+
         categories = BlogCategory.objects.all()
-        posts = BlogDetailPage.objects.all().public().live()
-        context['categories'] = categories
-        context['posts'] = posts
+        context["categories"] = categories
+
+        # Get related posts based on current category
+        current_cat = []
+        for category in self.category.all():
+            current_cat.append(category)
+
+        related = (
+            BlogDetailPage.objects.public()
+            .live()
+            .filter(category__name__in=current_cat)
+            .order_by("-first_published_at")[:2]
+        )
+        context["related"] = related
+
         return context
 
     content_panels = Page.content_panels + [

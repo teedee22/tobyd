@@ -21,27 +21,29 @@
     </div>
 </header>
 
- <!-- Row containing categories -->
+<!--  -->
 <div class="container">
     <div class="row flex-md-row-reverse">
+        <!-- For the panel on the right, -->
         <div class="col-md-3 mx-auto my-3">
             <div class="row">
-                <div class="col text-center">
-                    {% if self.category.all.count > 0 %}
-                        <ul style='list-style: none;'>
-                            <li style='display: inline-block'>{% if self.category.all.count == 1 %}Category: {% elif self.plural_categories > 1 %} Categories: {% endif %}</li>
-                            {% for cat in self.category.all %}
-                                <a href="/blog/?category={{ cat.slug }}"><li style='display: inline-block'> {{ cat.name }}{% if forloop.counter < self.category.all.count %}, {% endif %}</li></a>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+                <div class="col">
+                    <h2 class="text-center">Categories</h2>
+                    {% for category in categories %}
+                        <a style="display: block;"{% if category not in self.category.all %}class="text-muted"{% endif %} href="/blog/?category={{ category.slug }}"> {{ category }}</a>
+                    {% endfor %}
                 </div>
             </div>
-            <h1>Categories</h1>
-            {% for category in categories %}
-                <a style="display: block;" href="/blog/?category={{ category.slug }}"> {{ category }}</a>
-            {% endfor %}
+            <div class="row my-3">
+                <div class="col">
+                    <h2 class="text-center">Related</h2>
+                    {% for post in related %}
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
+        <!-- For the panel on the left -->
         <div class="col-md-9">
             <!-- Post Content -->
             <article>
@@ -49,17 +51,11 @@
                     {% include_block block %}
                 {% endfor %}
             </article>
-                {% show_comments %}
-        </div>
-    </div>
-</div>
-<!-- disqus comments section -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+            <!-- Show disqus comments -->
             {% show_comments %}
         </div>
     </div>
 </div>
+
 
 {% endblock %}
