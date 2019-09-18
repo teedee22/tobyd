@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'flex',
     'menus',
     'storages',
+    'contact',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'widget_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -154,3 +156,10 @@ WAGTAIL_SITE_NAME = "tobyd"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ['MG_HOST']
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ['MG_ADDRESS']
+EMAIL_HOST_PASSWORD =os.environ['MG_PASSWORD']
+EMAIL_USE_TLS = True

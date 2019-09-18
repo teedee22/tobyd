@@ -49,6 +49,14 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'https://' + '.s3.amazonaws.com/' + 'media/'
 
+# Mail settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ['MG_HOST']
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ['MG_ADDRESS']
+EMAIL_HOST_PASSWORD =os.environ['MG_PASSWORD']
+EMAIL_USE_TLS = True
+
 try:
     from .local import *
 except ImportError:
