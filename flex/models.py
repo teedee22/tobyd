@@ -13,8 +13,8 @@ from streamfs import blocks
 class FlexiblePage(Page):
     template = "flex/flexible_page.html"
 
-    custom_title = models.CharField(max_length=100, null=True, blank=True)
-    subtitle = models.CharField(max_length=250, null=True, blank=True)
+    banner_title = models.CharField(max_length=100, null=True, blank=True)
+    banner_subtitle = models.CharField(max_length=250, null=True, blank=True)
     banner_image = models.ForeignKey(
         "wagtailimages.Image",
         blank=False,
@@ -33,8 +33,8 @@ class FlexiblePage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel("custom_title"),
-        FieldPanel("subtitle"),
+        FieldPanel("banner_title"),
+        FieldPanel("banner_subtitle"),
         ImageChooserPanel("banner_image"),
         StreamFieldPanel("content"),
     ]

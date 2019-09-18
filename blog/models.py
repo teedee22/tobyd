@@ -53,10 +53,10 @@ class BlogListingPage(Page):
         related_name="+",
         on_delete="models.SET_NULL",
     )
-    custom_title = models.CharField(max_length=120, blank=True, null=True)
+    banner_title = models.CharField(max_length=120, blank=True, null=True)
     intro_text = RichTextField(blank=True, null=True)
     content_panels = Page.content_panels + [
-        FieldPanel("custom_title"),
+        FieldPanel("banner_title"),
         ImageChooserPanel("banner_image"),
         FieldPanel("intro_text")
     ]

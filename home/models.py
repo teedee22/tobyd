@@ -35,6 +35,7 @@ class HomePage(Page):
         related_name="+",
     )
     about_title = models.CharField(max_length=100, blank=True, null=True)
+    about_subtitle = models.CharField(max_length=100, blank=True, null=True)
     about_text = RichTextField(
         features=["bold", "italic"], blank=True, null=True
     )
@@ -59,6 +60,7 @@ class HomePage(Page):
         MultiFieldPanel(
             [
                 FieldPanel("about_title"),
+                FieldPanel("about_subtitle"),
                 ImageChooserPanel("about_image"),
                 FieldPanel("about_text"),
             ],

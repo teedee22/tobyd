@@ -3,20 +3,7 @@
 {% block content %}
 
 <!-- Page Header -->
-{% image self.banner_image max-1900x1265 as img %}
-<header class="masthead" style="background-image: url('{{ img.url }}')">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="page-heading">
-                    <h1>{% if self.custom_title %}{{ self.custom_title }} {% else %} {{ self.title }} {% endif %}</h1>
-                <span class="subheading">{% if self.subtitle %} {{ self.subtitle }} {% endif %}</span>
-            </div>
-        </div>
-    </div>
-    </div>
-</header>
+{% include "home/banner/title_banner.html" %}
 
 <!-- Streamfield content -->
 <div class="container">

@@ -3,26 +3,7 @@
 {% block content %}
 
 <!-- Page Header -->
-{% image self.banner_image fill-4000x1000-c100 as img %}
-<header class="masthead" style="background-image: url('{{ img.url }}')">
-    <div class="overlay"></div>
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                  <br>
-                  {% if self.banner_title %}
-                      <h1>{{ self.banner_title }}</h1>
-                  {% endif %}
-                  {% if self.banner_subtitle %}
-                    <span class="subheading">{{ self.banner_subtitle}}</span>
-                  {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<hr>
+{% include "home/banner/title_banner.html" %}
 
 <!-- About box -->
 {% image self.about_image fill-640x480-c100 as img2 %}
@@ -43,7 +24,7 @@
               <div class="col-md-7 mx-auto text-left">
                 <!-- Excerpt -->
                 <h1 class="my-4">{{ self.about_title }}
-                    <small>I make Websites</small>
+                    <small>{{ self.about_subtitle }}</small>
                 </h1>
                 {{ self.about_text|richtext }}
                 <div class="clearfix text-center">
