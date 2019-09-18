@@ -7,3 +7,7 @@ env2/
 
 # Ignore media files
 media/
+
+# Ignore production changes
+manage.py
+tobyd/wsgi.py

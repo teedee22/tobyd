@@ -26,12 +26,14 @@ class MenuItem(Orderable):
     )
     open_in_new_tab = models.BooleanField(default=False, blank=True)
     page = ParentalKey("Menu", related_name="menu_items")
+    highlighted = models.BooleanField(default=False, blank=True)
 
     panels = [
         FieldPanel("link_title"),
         FieldPanel("link_url"),
         PageChooserPanel("link_page"),
         FieldPanel("open_in_new_tab"),
+        FieldPanel("highlighted"),
     ]
 
     @property
