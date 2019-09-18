@@ -7,9 +7,11 @@ Django==2.2.5
 django-debug-toolbar==2.0
 django-extensions==2.2.1
 django-modelcluster==4.4
+django-recaptcha==2.0.5
 django-storages==1.7.1
 django-taggit==0.24.0
 django-treebeard==4.3
+django-widget-tweaks==1.4.5
 djangorestframework==3.10.3
 docutils==0.15.2
 draftjs-exporter==2.1.6
@@ -17,7 +19,6 @@ html5lib==1.0.1
 idna==2.8
 jmespath==0.9.4
 Pillow==6.1.0
-pkg-resources==0.0.0
 psycopg2==2.8.3
 python-dateutil==2.8.0
 pytz==2019.2
@@ -28,5 +29,6 @@ sqlparse==0.3.0
 Unidecode==1.1.1
 urllib3==1.25.3
 wagtail==2.6.1
+wagtail-django-recaptcha==1.0
 webencodings==0.5.1
 Willow==1.1

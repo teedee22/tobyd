@@ -10,7 +10,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['tobyd.net', '198.211.109.134', 'localhost']
+ALLOWED_HOSTS = ['www.tobyd.net', 'tobyd.net', '198.211.109.134', 'localhost']
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
