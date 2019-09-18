@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-
-<h1>{{ self.thank_you_text|richtext }}
+{% image self.banner_image max-1900x1265 as img %}
+<header class="masthead" style="background-image: url('{{ img.url }}')">
+<div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <br>
+                    <h1>{{ page.title }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="text-center">
+        <h2>{{ self.thank_you_text|richtext }}</h2>
+    </div>
+</div>
 
 {% endblock %}

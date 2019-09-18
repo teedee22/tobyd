@@ -54,9 +54,11 @@ class BlogListingPage(Page):
         on_delete="models.SET_NULL",
     )
     custom_title = models.CharField(max_length=120, blank=True, null=True)
+    intro_text = RichTextField(blank=True, null=True)
     content_panels = Page.content_panels + [
         FieldPanel("custom_title"),
         ImageChooserPanel("banner_image"),
+        FieldPanel("intro_text")
     ]
 
     def get_context(self, request):

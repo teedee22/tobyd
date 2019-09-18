@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags widget_tweaks %}
+{% load wagtailcore_tags widget_tweaks wagtailimages_tags %}
 
 {% block content %}
 
+{% image self.banner_image max-1900x1265 as img %}
 <header class="masthead" style="background-image: url('{{ img.url }}')">
 <div class="overlay"></div>
     <div class="container">
@@ -16,6 +17,7 @@
         </div>
     </div>
 </header>
+
 <div class= "container">
     <br>
     <!-- TrustBox widget - Micro Review Count -->
@@ -26,7 +28,7 @@
 <p>
     {{ self.intro|richtext }}
 </p>
-<div class="container">
+<div class="container bg-light text-dark">
     <div class="col-sm-7 mx-auto">
         <form action="{% pageurl page %}" method="POST">
             {% csrf_token %}
@@ -34,6 +36,7 @@
             <div class="form-group">
                 {{ field.label_tag }}
                 {% render_field field class+="form-control" %}
+                <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
             </div>
             {% endfor %}
             <button type="submit" class="btn btn-primary" >Submit</button>
