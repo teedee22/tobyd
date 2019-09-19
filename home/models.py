@@ -39,6 +39,13 @@ class HomePage(Page):
     about_text = RichTextField(
         features=["bold", "italic"], blank=True, null=True
     )
+    about_cta= models.ForeignKey(
+        "wagtailcore.page",
+        null=True,
+        blank=True,
+        related_name="+",
+        on_delete=models.SET_NULL,
+    )
 
     featured_blog_post = models.ForeignKey(
         "wagtailcore.page",
@@ -63,6 +70,7 @@ class HomePage(Page):
                 FieldPanel("about_subtitle"),
                 ImageChooserPanel("about_image"),
                 FieldPanel("about_text"),
+                PageChooserPanel("about_cta"),
             ],
             heading="About me box",
         ),

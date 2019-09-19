@@ -1,13 +1,31 @@
 """Flexible page"""
 
 from django.db import models
-
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.models import Page
+from modelcluster.fields import ParentalKey
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    StreamFieldPanel,
+)
+from wagtail.core.models import Orderable, Page
 from wagtail.core.fields import StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from streamfs import blocks
+
+
+class StackImages(Orderable):
+    page = ParentalKey("flex.FlexiblePage", related_name="stack_images")
+    stack_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    stack_url = models.URLField(blank=True, null=True)
+    panels = [ImageChooserPanel("stack_image"), FieldPanel("stack_url")]
 
 
 class FlexiblePage(Page):
@@ -36,5 +54,13 @@ class FlexiblePage(Page):
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
         ImageChooserPanel("banner_image"),
+        MultiFieldPanel(
+            [
+                InlinePanel(
+                    "stack_images", max_num=10, min_num=1, label="stack images"
+                )
+            ],
+            heading="Images of tech stack used",
+        ),
         StreamFieldPanel("content"),
     ]
