@@ -33,6 +33,10 @@ DATABASES = {
 }
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Silence recaptcha
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
 try:
     from .local import *
 except ImportError:

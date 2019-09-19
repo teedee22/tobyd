@@ -57,6 +57,10 @@ EMAIL_HOST_USER = os.environ['MG_ADDRESS']
 EMAIL_HOST_PASSWORD =os.environ['MG_PASSWORD']
 EMAIL_USE_TLS = True
 
+RECAPTCHA_PUBLIC_KEY = os.environ['TD_RECAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['TD_RECAPTCHA_PRIVATE_KEY']
+NOCAPTCHA = True
+
 try:
     from .local import *
 except ImportError:
